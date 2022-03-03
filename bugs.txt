@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------------------------
+date: 17.06.19
+fixed: no
+coment: clicked and not moved a rect
+log:
+Traceback (most recent call last):
+  File "rat.py", line 1097, in mouseReleaseEvent
+    player.bBoxList[self.grabbedIdx].ctrPoint += d
+IndexError: list index out of range
+--------------------------------------------------------------------------------------------------
