@@ -1,0 +1,7 @@
+Pillow
+opencv-python
+PyQt5
+numpy
+shapely
+uuid
+pandas
