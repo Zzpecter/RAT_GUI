@@ -10,10 +10,35 @@ class Annotation:
     def __init__(self, annotation_file_path):
         self.annotation_file_path = os.path.normpath(annotation_file_path)
         assert os.path.exists(self.annotation_file_path)
+        self.ann_dict = {}
+        self.author = None
+        self.ann_count = None
+        self.fps = None
+        self.load_from_file()
 
-    def save_to_file(self, save_path, author, len_check, frames_per_second):
-        with open(filename, "w") as f:
-            f.write(f'author:§{author}§ lenght:§{len_check}§ fps:§{frames_per_second}§\n')
+    def load_from_file(self):
+        current_frame = None
+        with open(self.annotation_file_path) as file:
+            while line := file.readline():
+                if 'author' in line:
+                    header_items = line.split('§')
+                    self.author = header_items[1]
+                    self.ann_count = header_items[3]
+                    self.fps = header_items[5]
+                elif all([d.isdigit() for d in line.strip()]):
+                    current_frame = int(line.strip())
+                elif len(line.split(' ')) == 5: # bbox line
+                    if current_frame is None:
+                        print(f'error in line {line} current_frame is none')
+                        continue
+                    if self.ann_dict.get(current_frame, None) is None:
+                        self.ann_dict[current_frame] = []
+                    self.ann_dict[current_frame].append([int(e) for e in line.split(' ')])
+
+
+    def save_to_file(self, , author, len_check, frames_per_second):
+        with open(self.annotation_file_path, "w") as f:
+            f.write(f'author:§{self.author}§ lenght:§{self.len_check}§ fps:§{self.frames_per_second}§\n')
 
     def update_annotation_scale(self, filename, new_filename, scale=4):
         """
