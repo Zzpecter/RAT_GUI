@@ -6,9 +6,7 @@ from PIL import Image
 # frameDir = './extractedFrames1920/FRA19LAP/'
 
 
-# def extract_frames(video_file_path, target_dir_name):
-#     os.system(f'ffmpeg -i "{video_file_path}" -qscale:v 2 "{target_dir_name}"%12d.jpg')
-#
+
 
 def extract_frames(video_path, video_filename, resize = False, new_shape = (640,480)):
 

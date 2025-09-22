@@ -5,6 +5,10 @@ import os
 
 from utils.io_utils import print_progress
 
+# TODO: see if this could be a backup function
+# def extract_frames(video_file_path, target_dir_name):
+#     os.system(f'ffmpeg -i "{video_file_path}" -qscale:v 2 "{target_dir_name}"%12d.jpg')
+#
 
 class Video:
     def __init__(self,

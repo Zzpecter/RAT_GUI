@@ -9,42 +9,14 @@ newFile = './newAnn.ann'
 #newRes = (960, 540)
 
 def print_progress(i, n, prefix='', suffix='', decimals=3, bar_length=100):
-
-    format_str = "{0:." + str(decimals) + "f}"  # format the % done number string
-    percents = format_str.format(100 * (i / float(n)))  # calculate the % done
-    filled_length = int(round(bar_length * i / float(n)))  # calculate the filled bar length
-    bar = '#' * filled_length + '-' * (bar_length - filled_length)  # generate the bar string
-    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),  # write out the bar
+    format_str = "{0:." + str(decimals) + "f}"
+    percents = format_str.format(100 * (i / float(n)))
+    filled_length = int(round(bar_length * i / float(n)))
+    bar = '#' * filled_length + '-' * (bar_length - filled_length)
+    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
     sys.stdout.flush()
 
-def save_annotation_to_file(filename, author, len_check, frames_per_second):
-    with open(filename, "w") as f:
-        f.write(f'author:§{author}§ lenght:§{len_check}§ fps:§{frames_per_second}§\n')
 
-def update_annotation_scale(filename, new_filename, scale=4):
-    """
-    NOT SURE FOR WHAT THIS IS USED
-    :param filename:
-    :return:
-    """
-
-    with open(filename, "r") as f:
-        for line in f[1:]:
-
-            if '.' in line:
-                class_id, x1, y1, x2, y2 = line.split(' ')
-                bbox = [float(x1)/scale, float(y1)/scale, float(x2)/scale, float(y2)/scale]
-
-
-                with open(new_filename, "a") as f:
-                    f.write(f'{class_id} {bbox[0]} {bbox[1]} {bbox[2]} {bbox[3]}\n')
-            elif len(line) is 0:
-                #eof
-                break
-            else:
-                #frame number lines
-                with open(newFile, "a") as f:
-                    f.write('{}\n'.format(int(line)))
 
 
 
