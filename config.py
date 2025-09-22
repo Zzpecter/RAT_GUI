@@ -1,0 +1,21 @@
+# Frame dimensions
+FRAME_WIDTH = 960
+FRAME_HEIGHT = 540
+FRAME_CHANNELS = 3
+
+# Application settings
+DEFAULT_PROJECTS_DIR = "./Projects"
+DEFAULT_MIN_BOX_SIZE = (20, 40)
+DEFAULT_MAX_BOX_SIZE = (50, 100)
+
+# Template Matching defaults
+DEFAULT_TM_FRAMESPAN = 7
+DEFAULT_TM_THRESHOLD = 0.98
+
+# Optical Flow defaults
+OF_FILTER_THRESHOLD = 0.08
+OF_TEST_LENGTH_PERCENT = 0.02
+OF_KERNEL_SIZE = (27, 27)
+
+# Annotation Display
+ANNOTATION_BAR_SEGMENTS = 96 # 960px / 10px per segment
